@@ -1,0 +1,34 @@
+# BIG O 
+
+##RULE BOOK
+
+RULE 1: Worst Case - measure algorithmic efficiancy by their worst case scenario
+Rule 2: Remove constants where O(2n) is simply O(n)
+    - iterating through half a collection(O(n/2)) is still O(n)
+Rule 3: Different terms for inputs; 2 inputs is not O(n) but O(a+b). 
+    - if nested O(a*b)
+Rule 4: Drop non dominant terms as they are insignificant relative to dominant terms
+
+Why is this important?
+    - writing with Big O in mind is writing scalable code, or in other words, thinking long term.
+
+Picking the right data structures and the right algorithims = great programming
+
+///////////////////////////////////
+Good code is READABLE and scalable
+///////////////////////////////////
+
+What are the components of good code?
+1. Readable
+    -others can read that is maintainable
+2. Speed    
+    -has a Big O timecomplexity that is scalable
+3. Memory
+    -efficiancy of code's space complexity (how efficiently it uses space)
+Note: There can be a trade off between speed and memory. More speed may mean having to use more memory.
+
+What causes space complexity?
+Variables
+Data structures
+Function calls
+Allocations
