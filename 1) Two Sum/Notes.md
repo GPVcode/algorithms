@@ -62,4 +62,9 @@ Is there a way to remove code, merge my two, or multiple pieces of code for more
 ### Step 9: Code the optimal solution
 
 ### Step 10: Run through test cases using our optimal solution
+Create empty hash map to variable numsMap.
+initialize p in for loop starting at index 0. Begin iteration. Assign numsMap hashmap with value num[p] to variable currentMapValue;
+if true, return [currentMapValue, num[p]} //I feel like this is p
+else, numberToFind = target - num[p]p and numsMap[numberToFind] = p
+if both codes break return null
 With the new optimal code, our time complexity improves to O(N), slightly more space is used at O(N)
