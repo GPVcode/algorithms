@@ -35,3 +35,25 @@ anagrams('anagrams', 'nagarams');
 
 
 
+function sameFrequency(num1, num2){
+    let num1str = num1.toString();
+    let num2str = num2.toString();
+
+    if(num2str.length !== num1str.length) return false;
+
+    let obj = {};
+    for(let i = 0; i < num1str.length; i++){
+        let value = num1str[i];
+        obj[value] ? obj[value] += 1 : obj[value] = 1;
+    }
+    for(let i = 0; i < num2str.length; i++){
+        let value = num2str[i];
+        if(!obj[value]){
+            return false
+        } else{
+            obj[value] -= 1;
+        }
+    }
+    return true
+}
+sameFrequency(122, 12)
