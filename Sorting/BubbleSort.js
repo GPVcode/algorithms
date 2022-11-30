@@ -1,6 +1,8 @@
 // Many sorting methods, some best for niche use cases 
 // Bubble sort is not an efficient algorithm but good to know either way.
 // Pass through the entire array and swap if lower index has a higher value. Start over again and over again, until true sort is confirmed.
+// Places large values into sorted position
+// Bubble sort works well for a nearly sorted array
 
 function bubbleSort(arr){
     let noSwaps;

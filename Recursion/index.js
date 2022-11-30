@@ -41,7 +41,7 @@ sumRange(5) //round 1: return 5 + sumRange(4) + sumRange(3) + sumRange(2) + sumR
 
 //4! (4*3*2*1)
 //without recursion
-function factorial(num){
+function factorial(num){ 
     let total = 1;
     for(let i = num; i > 0; i--){
         total *= i
