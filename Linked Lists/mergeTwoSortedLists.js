@@ -13,24 +13,49 @@ Edge cases:
 - 1 empty list and one list with one value should outpust a list of just one value.
 */
 
-function mergeTwoSortedListsl(l1, l2){
-    //Check is any of the list is empty
-    if(!l1){
-        return l2;
-    }
-    if(!l2){
-        return l1;
-    }
-    //determine head of new linked list. Head will be the smaller list of the two
-    let head = null;
-    //reference of head - null at this point
-    let temp = head;
+// function mergeTwoSortedListsl(l1, l2){
+//     //Check is any of the list is empty
+//     if(!l1){
+//         return l2;
+//     }
+//     if(!l2){
+//         return l1;
+//     }
+//     //determine head of new linked list. Head will be the smaller list of the two
+//     let head = null;
+//     //reference of head - null at this point
+//     let temp = head;
 
-    if(l1.val < l2.val){
-        temp = head = new List
+//     if(l1.val < l2.val){
+//         temp = head = new List
+//     }
+//     //Loop through each node of the list until one of the lists gets traversed completely
+//     //While traversing the lists, id the smaller of the nodes of the lists and add it tot he results list.
+//     //When loop is done, if there is a list with nodes remaining, we will add those remaiing nodes to the resultant list
+//     if()
+// }
+
+
+function mergeTwoLinkedLists(l1, l2){
+    const curr = new ListNode();
+    const dummy  = curr;
+
+    while(l1 && l2){
+        if(l1.val < l2.val){
+            curr.next = l1
+            l1 = l1.next;
+        }else{
+            curr.next = l2
+            l2 = l2.next;
+        }
+        curr = curr.next
     }
-    //Loop through each node of the list until one of the lists gets traversed completely
-    //While traversing the lists, id the smaller of the nodes of the lists and add it tot he results list.
-    //When loop is done, if there is a list with nodes remaining, we will add those remaiing nodes to the resultant list
-    if()
+
+    if(l1){
+        curr.next = l1;
+    }
+    if(l2){
+        curr.next = l2;
+    }
+    return dummy.next;
 }
