@@ -11,6 +11,7 @@ const findMaxInSlidingWindow = function (nums, windowSize){
     //Return empty list, if nums is empty
     if(nums.length == 0) return result;
 
+
     //if window_size is greater than the array size, set the window_size to nums.size()
     if(windowSize > nums.length) windowSize = nums.length;
     
@@ -39,3 +40,11 @@ result.push(nums[window[0]]);
 
     return result;
 };
+
+
+
+input: -4, 2, -5, 1, -1, 6
+
+window: 5
+
+result: 2, 2, 1, 6
