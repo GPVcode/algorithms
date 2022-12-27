@@ -1,12 +1,33 @@
 
 var maxSlidingWindow = function(nums, k) {
 
+    if( nums.length === 0 || k < 1 || k > nums.length) return [];
 
-
-  
-};  
-
-
+    const result = [];
+    const deque = [];
+ 
+    for(let i = 0; i < nums.length; i++){
+        while( deque.length > 0 && nums[deque[deque.length - 1]] < nums[i]){
+            deque.pop(); 
+        }
+        deque.push(i);
+        if(deque[0] < i - k + 1){
+            deque.shift();
+        }
+        if(i >= k - 1){
+            result.push(nums[deque[0]]);
+        }
+    }
+        
+    return result
+}; 
+/*                   i=4
+nums = [1, 3, -1, -3, 5] 
+k = 2
+expectedOutput = [3, 3, -1, 5] 
+result = [3, 3, -1, 5]
+deque = [4]
+*/
 /* 
 if
 nums: [1, 3, -1, -3, 5, 3, 6, 7] 
@@ -45,43 +66,6 @@ the function should return [3, 3, 5, 5, 6, 7].
         //Step 4: if current window is of the size k, append the maximum element (i.e., the elements at the fron of the deque) to the result array
         
         //return result
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
