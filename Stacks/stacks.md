@@ -5,3 +5,4 @@
 What are the two primary options of stacks?
     - The primary options are push and pop. Push adds and element to the top of the stack and pop
 
+arr.key
