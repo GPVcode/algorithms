@@ -23,6 +23,18 @@
  *   Output: [0,1]
  * 
  */
+
+/*
+Understand the question:
+    return the indices who values sum to target  input: [1, 1] target = 2 output: [0, 1]
+Devise a plan:
+    use map to store key value pairs to help find answer
+    use for loop to iterate
+    if conditions
+    return array of indices
+Code:
+    >>Hashmap Solution<<
+*/
 var twoSum = function(nums, target) {   // nums = [3,3] target 6
     //create map
         const map = {};  // {'3': 0, }
@@ -40,16 +52,70 @@ var twoSum = function(nums, target) {   // nums = [3,3] target 6
     }
 
 };
+console.log("twoSum:", twoSum([3,3], 6))
 
-console.log(twoSum([3,3], 6))
+
+
 /*
-Understand the question:
-    return the indices who values sum to target  input: [1, 1] target = 2 output: [0, 1]
+Understand the problem:
+    There is exactly one solution. Find the indices whose values add to target
 Devise a plan:
-    use map to store key value pairs to help find answer
-    use for loop to iterate
-    if conditions
-    return array of indices
+    use nested loops to compare values. If sum of two values equals target, return the index.
 Code:
-
+    >>Brute Force Solution<<
 */
+                            
+var twoSum2 = function(nums, target) {   // nums = [3,3,3,4,5,6,7] target 6
+    // create empty array                               1
+    let result = [];
+    //use nested loops to compare two values
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i + 1; j < nums.length; j++){
+            if(nums[i] + nums[j] === target){
+                result.push(i)
+                result.push(j)
+            }
+        }
+    }
+    //return array after loop is finished
+    return result
+};
+
+console.log("twoSum2:", twoSum2([2,7,11,15], 9)) //target = 9 output: [0, 1]
+
+
+
+/*
+Understand the problem:
+    There is exactly one solution. Find the indices whose values add to target
+Devise a plan:
+    create empty array, and two points we'll use to compare values
+    loop through and check sum values of numbers at two points
+        decrement end point to continue finding values that add to target
+Code:
+    >>Two-Pointer Solution<<
+*/
+var twoSum3 = function(nums, target) {   // nums = [2,7,11,15] target = 9
+    //create empty array, start and end
+    let slow = 0, fast = slow + 1;
+    let results = null;
+
+        //while loop?
+        while(true){ 
+            let sum = nums[slow] + nums[fast]; // 17
+            if(sum === target){
+                results = [slow, fast];
+                break;
+            };
+            fast++;
+            if(fast >= nums.length){
+                slow++;
+                fast = slow + 1;
+            };
+            if(slow >= nums.length) break;
+        };
+        return results
+};
+
+console.log("twoSum3:", twoSum3([3, 2, 4], 6)) //target = 9 output: [0, 1] 
+
