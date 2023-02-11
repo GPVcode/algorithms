@@ -83,7 +83,7 @@ const maxArea2 = function(height) {
         if(area > maxArea){                                                           // 49 > 4         | maxArea = 49
             maxArea = area; 
         }                    
-        if(minHeight === height[left]) left++;
+        if(height[left] < height[right]) left++;
         else right--;
                            
     }   
