@@ -30,12 +30,12 @@
         use Math.min and Math.max to find the value we are looking for to plug into area formulal
         return maxArea
     Code: Brute Force
-                                                         i
-                                        Input: height = [1,8,6,2,5,4,8,3,7]
-                                                             j
+                                                         l
+                                        Input: height = [1,8,6,2,5,4,8,3,7]   Output: 49
+                                                                         r
 Output: 49
 */ 
-const maxArea4 = function(height) {
+const maxArea = function(height) {
     //create max area holder
     let maxArea = 0;
     //use nested loops to work with values
@@ -50,11 +50,44 @@ const maxArea4 = function(height) {
     //return max Area
     return maxArea;
 };
-console.log("maxArea4:", maxArea4([1,1]))
+console.log("maxArea:", maxArea([7,1,2,3,9]))
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
 Understand the Problem:
+    return the largest area in the array. Find combination of indices that create the largest area and return this largest area.
 
 Devise a plan:
+    Use two pointers to "scan" through entire array, and create logic to find and store maxArea.
+    Repeat process until values in array are check and maxArea is found
+    return maxArea   
 
+Code: TWO-POINTER Style
+
+                                                                     l
+                                        Input: height = [1,8,6,2,5,4,8,3,7]   Output: 49
+                                                                     r
 */
+const maxArea2 = function(height) {
+    //Create maxArea var and two pointers
+    let maxArea = 0, left = 0, right = height.length - 1;
+
+    //iterate while left pointer is less than right pointer
+    while(left < right){
+        let base = right - left                                                       // 6 - 5 = 1      | base = 1
+        let minHeight = Math.min(height[left], height[right])                          // [4], [8]      | minHeight = 4
+        //find area based on values of our pointers
+        const area = base * minHeight;                                                 // 1 * 4 = 4     | area = 4
+        //compare current area with maxArea. Update maxArea as appropriate.
+        if(area > maxArea){                                                           // 49 > 4         | maxArea = 49
+            maxArea = area; 
+        }                    
+        if(minHeight === height[left]) left++;
+        else right--;
+                           
+    }   
+        //return maxAreadsa
+        return maxArea
+};
+console.log("maxArea2:", maxArea2([1,8,6,2,5,4,8,3,7]))            
