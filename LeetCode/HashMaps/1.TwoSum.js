@@ -117,5 +117,33 @@ var twoSum3 = function(nums, target) {   // nums = [2,7,11,15] target = 9
         return results
 };
 
-console.log("twoSum3:", twoSum3([3, 2, 4], 6)) //target = 9 output: [0, 1] 
+console.log("twoSum3:", twoSum3([3, 2, 4], 6)) //target = 6 output: [1, 2] 
 
+/*
+Understand the problem
+    find the first indices that sum to our target. Return these indices in array form.
+Devise a plan
+    use map to store key value pairs.
+    use key value pairs to check if number to find is stored
+    use the numToFind as key in map and the index as it's value
+    if stored, we found our indices to find and return its value and the current i in array
+
+Code:
+*/
+//Hashmap storing number to find as Key
+var twoSum4 = function(nums, target) {   // nums = [3, 2, 4] target = 6
+    //create map = {'3': 0, '4': 1, '': }
+    let map = {};
+    //loop through nums array;
+    for(let i = 0; i < nums.length; i++){
+        //create var for number to find
+        let numToFind = target - nums[i]; // 6 - 4 = 2;
+        if(nums[i] in map){ 
+            return [map[nums[i]], i] //[1, 2]
+        } else{
+            map[numToFind] = i; //map[4] = 1
+        }
+    }
+};
+
+console.log("twoSum3:", twoSum4([3, 2, 4], 6)) //target = 6 output: [1, 2] 
