@@ -83,6 +83,7 @@ const trap2 = function(height) {
 
     //use while loop
     while(left < right){
+        // decide which side to start on
         if(height[left] <= height[right]){                              //totalWater = 1
             if(height[left] >= maxLeft){
                 maxLeft = height[left] // maxleft = 2
@@ -90,7 +91,7 @@ const trap2 = function(height) {
                 totalWater += maxLeft - height[left] // + 1 + 1 + 2 + 1  + 1
             }
             left++;
-        } else{
+        } else{ //exact same but on the right
             if(height[right] >= maxRight){
                 maxRight = height[right];  //maxRight = 2
             } else{
