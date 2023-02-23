@@ -57,3 +57,34 @@ function isPalindrome2(s) {
 }
   
 console.log("isPalindrome2:", isPalindrome2("A man, a plan, a canal: Panama"))
+
+
+/*
+Understand the problem:
+  True or false? The input is the exact same if you reversed it. Return the your answer.
+Devise a plan:
+  use two pointers to check if values are the same
+  iterate while left is less than right
+    if equal, continue, else return false
+Code: Two-Pointer
+*/
+
+function isPalindrome3(s) {
+  s = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  console.log(s)
+  //create two pointers, left and right
+  let left = 0, right = s.length - 1;
+  //while loop
+  while( left < right ){
+    //check if two letters are the same, if not, then return false
+     if(s[left] === s[right]){
+      left++;
+      right--;
+     } else{
+      return false
+     }
+  }
+  return true;
+}
+
+console.log("isPalindrome3:", isPalindrome3("A man, a plan, a canal: Panama"))
