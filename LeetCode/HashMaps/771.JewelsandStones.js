@@ -49,29 +49,33 @@ Understand the Problem:
     Find how many of the jewels are in stones. Example: jewels = "aA" stones = "aA" output: 2
 Devise a Plan:
     use map to store letter in key
-    check if value in map, if not then add to map
-
-    return map.size
+    loop through first input
+        check if value in map, if not then add to map
+    loop through another input and then if char in map
+        if in map add to counter
+    return counter
 Code it Out: Hashmap
 
                                                                 jewels: aA 
                                                                 stones: aAAbbbb
 
 */
-var numJewelsInStones = function(jewels, stones) {
+var numJewelsInStones2 = function(jewels, stones) {
     //create map object
     let map = {};
-    //pointer for stones
-    let stonesP = 0;
+    //counter
+    let counter = 0;
     for(let i = 0; i < jewels.length; i++){
         //if cond
-        if(!jewels[i] in map) map[jewels[i]] = 1;
+        if(!map[jewels[i]]) map[jewels[i]] = 1;
     }
-    for(char in map){
-        
+    console.log("map:", map)
+    for(let j = 0; j < stones.length; j++){
+        console.log("char in stones", stones[j])
+        if(stones[j] in map) counter++;
     }
     //return counter
     return counter
 };
 
-console.log("numJewelsInStones in Brute Force:", numJewelsInStones("aA", "aAAbbbb"))
+console.log("numJewelsInStones Hashmap:", numJewelsInStones2("aA", "aAAbbbb"))
