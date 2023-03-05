@@ -49,9 +49,22 @@ function reverse(x) {
 console.log("reverse:", reverse(-00555))
 
 
-const reverse2 = function(x) {
-    const reversed = x.toString().split('').reverse().join('');
+/*
+Core Understanding:
+    return the input integer reversed. Maintain if input is positive or negative after the reverse. numbers like 700 should return as 7.
+Devise a Plan:
+    Use absolute values to make integer positive. SPlit the integer to create an array, then use reverse, followed by join method.
+    return as number(you can use ParseInt) and multiply by Math.sign to maintain state(positive or negative)
+Code:
+*/
 
+
+const reverse2 = function(x) {
+    //turn x into positive number, then into string, then reverse string then rejoin.
+    const reversed = Math.abs(x).toString().split('').reverse().join('');
+    //this is to bypass leetcode contraint
+    if(reversed > 2**31) return 0;
+    //return revered variable as a number and multpliy it by Math.sign to keep positive or negative consitent.
     return parseInt(reversed) * Math.sign(x);
 };
 
