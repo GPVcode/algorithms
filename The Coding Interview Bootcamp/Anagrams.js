@@ -40,9 +40,7 @@ function anagrams(stringA, stringB){
     }
     return true
 }
-
 console.log("anagrams:", anagrams('One One', 'Two two two')) 
-
 
 /*
 Core Understanding:
@@ -53,7 +51,7 @@ Devise a Plan:
     use a basecase condition to make sure both variables are the same length. Check length of Keys using Object.keys
     loop through on of the map variables and if mapA of char does not equal mapB of char, the strings are not equal and return false
     after loop, return tru as false condition was not triggered meaning that the strings are anagrams.
-Code it Out: hashmap
+Code it Out: Helper function and For Loop
 */
 //using helper functions
 function anagrams2(stringA, stringB){
@@ -69,7 +67,6 @@ function anagrams2(stringA, stringB){
     //false was not triggered, return true. We have an anagram.
     return true;
 }
-
 //helper function
 function buildCharMap(str){
     //create empty map
@@ -82,5 +79,27 @@ function buildCharMap(str){
 
     return charMap;
 }
+console.log("anagrams2:", anagrams2('One One', 'Two two two'))
 
-console.log("anagrams:", anagrams('One One', 'Two two two')) 
+/*
+Core Understanding:
+    are the two inputs anagrams? Return true or false. An anagram is if two strings have the same characters used. Leave out space and punctuations.
+Devise a Plan:
+    turn each input into an array, then sort it then rejoin. Don't forget to get rid of characters we don't want and lowercase.
+    return strA === strB and boolean will return
+Code it Out: Built in methods
+*/ 
+
+function anagrams3(stringA, stringB){
+    //create strings using helper function
+    let strA = method(stringA)
+    let strB = method(stringB)
+    //reaturn while checking equality
+    return strA === strB
+}
+
+function method(str){
+    return str.replace(/[^\w]/g, '').split('').sort().join('').toLowerCase();
+}
+
+console.log("anagrams3:", anagrams3('One One', 'Two two two')) 
