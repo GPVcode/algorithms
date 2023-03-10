@@ -20,9 +20,30 @@
  */
 
 /*
-Core Un 
+Core Understanding:
+    console.log steps using characters "#" and " " based on number input
+Devise a Plan:
+    use counter to keep count of hash characters
+    creat an array of spaces with length of n
+    loop though this array
+        with each iteration, update the array with new hash and console.log in string format
+Code it out: Array
 */
 
 function steps(n) {
-  
+    //create empty array called stairs
+    let stairs = []
+
+    //create array of spaces
+    for(let i = 0; i < n; i++){
+        stairs.push(" ")
+    }
+    //iterate through empty array
+    for(let j = 0; j < stairs.length; j++){
+        //update the element in current index
+        stairs[j] = "#"
+        console.log(stairs.join(''))
+    }
 }
+
+console.log("steps:", steps(4)) 
