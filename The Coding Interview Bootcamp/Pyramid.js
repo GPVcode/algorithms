@@ -47,9 +47,9 @@ function pyramid(n) {
         let string = '';
         for(let j = 0; j < base; j++){
             //check if element is less than middle - i or greater than middle plus i. if so add  " "
-            if(j < middle - i || j > middle + i) string += " ";
+            if(j >= middle - i && j <= middle + i) string += "#";
             //otherwise add "#"
-            else string += "#";
+            else string += " ";
         }
         console.log(string)
     }
@@ -69,7 +69,7 @@ function pyramid2(n, row = 0, level = '') {
         return pyramid2(n, row + 1);
     } 
     //if the length of the stair string is less than or equal to the row number we're working on, we add a ' '
-    if(middle - row <= level.length && middle + row >= level.length){
+    if(middle + row >= level.length && middle - row <= level.length){
         add = '#';
     } else{ //otherwise add character
         add = ' '; 
@@ -78,3 +78,45 @@ function pyramid2(n, row = 0, level = '') {
 }
 
 console.log("pyramid2:", pyramid2(4));
+
+
+/*
+Core Understanding:
+    console log a pyramid with same level number as given input
+Devising a Plan:
+    set base cases
+    use if condition to check if we are at end of array length
+    use formulas to use for our logic triggers
+    use if condition to decide if "#" or " "
+    recursive calls to keep algorithm moving
+Coding it Out: Recursion
+*/
+
+function recursivePyramid(n, row = 0, floor = ""){
+    //set base case
+    if(n === row) return;
+    //formula for floor length
+    let base = (n * 2) - 1
+    //formula for middle of floor
+    let middle = Math.floor(base / 2)
+    //if condition to check array length
+    if(floor.length === base){
+        //console log something
+        console.log(floor)
+        return recursivePyramid(n, row + 1)
+    }
+    //set add variable to add to floor string (syntax purposes)
+    let add;
+    //if condition to check string
+    if(floor.length >= middle - row && floor.length <= middle + row){
+        add = "#";
+    }else{
+
+        add = " ";
+    }
+
+    //call recursively to keep algorithm moving
+    recursivePyramid(n, row, floor + add)
+}
+
+console.log("recusivePyramid:", recursivePyramid(4))
