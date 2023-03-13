@@ -128,12 +128,11 @@ Devising a Plan:
 Coding it Out: Match regex function
 */
 function vowels5(str) {
-    let vowelsOnly = str.match(/[a,e,i,o,u]/gi)
-    if(!vowelsOnly) return 0;
-    else return vowelsOnly.length;
+    let vowelsOnly = str.match(/[aeiou]/gi)
+    return vowelsOnly ? vowelsOnly.length : 0;
 }
 
-console.log("vowels5:", vowels5('bb ddd!'))
+console.log("vowels5:", vowels5('aeiou'))
 
 /*
 Core Understanding:
@@ -151,7 +150,7 @@ function vowels6(str) {
     //while loop
     while(right >= 0){ 
         //if array of left element matches regex, add to counter, add to left
-        if(str[right].match(/[a,e,i,o,u]/gi)){
+        if(str[right].match(/[aeiou]/gi)){
             counter++;
         }
         right--;
