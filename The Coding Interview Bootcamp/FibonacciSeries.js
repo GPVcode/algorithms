@@ -75,3 +75,18 @@ function fib2(n){
     return fibonacci[n]
 }
 console.log("fib2:", fib2(7))
+
+/*
+Core Understanding:
+    return the fibonacci number at the location of n
+Devising a Plan:
+    use if logic to return n if n is less than 2
+    return recursive function of fib(n-1) + recursive function of fib(n-2)
+Coding it Out: Recursion!
+*/
+function fib3(n){
+    if(n < 2) return n
+    return fib3(n-1) + fib3(n-2)
+}
+
+console.log("fib3:", fib3(2))
