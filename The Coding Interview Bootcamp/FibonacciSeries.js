@@ -58,7 +58,6 @@ function fib2(n){
     //create empty array called fibonacci
     let fibonacci = [];
     let fibNumber = 0;
-    let target = n;
 
     for(let i = 0; i <= n; i++){
         if(fibonacci.length < 2){
@@ -90,3 +89,36 @@ function fib3(n){
 }
 
 console.log("fib3:", fib3(2))
+
+/*
+Core Understanding:
+    return the fibonacci number at the location of n
+Devising a Plan:
+    use if logic to return n if n is less than 2
+    return recursive function of fib(n-1) + recursive function of fib(n-2)
+Coding it Out: Memoization
+*/
+
+function memoize(fn){
+    const cache = {};
+    return function(...args){
+        if(cache[args]){
+            return cache[args];
+        }
+
+        const result = fn.apply(this, args);
+        cache[args] = result;
+
+        return result;
+    };
+}
+
+function fib1(n){
+    if(n<2){
+        return n;
+    }
+    return fib1(n-1) + fib1(n-2);
+}
+
+fib1 = memoize(fib1);
+
