@@ -42,17 +42,51 @@ const maxProfit = function(prices) {
 
 console.log("maxProfit:", maxProfit([7,1,5,3,6,4]))
 
-
+/*
+Core Understanding:
+    Find the highest profit
+Devising a Plan:
+    set up a current max and min value
+    loop through prices
+        get the min value between min value and current i
+        get difference betwwen current i and min value
+        if difference is greater than max value, update
+    return max value.
+Coding it Out: Array
+*/
 const maxProfit2 = function(prices) {
-    let maxDiff = 0;
-    let minVal = prices[0];
-    for (let i = 1; i < prices.length; i++){ 
-        minVal = Math.min(minVal, prices[i]); //minVal = 1
-        let currDiff = prices[i] - minVal; // currDiff = 4 - 1 = 3
-        if(currDiff != maxDiff)
-        maxDiff = Math.max(maxDiff, currDiff); // max between 5 and 3
+
+    let highestProfit = 0;
+    let bottom = prices[0];
+
+    for(let i = 0; i < prices.length; i++){
+        //make sure we alwas have the lowest buy price
+        bottom = Math.min(prices[i], bottom)
+        let diff = prices[i] - bottom;
+        //compare diff to highest profit, keep the greater of the two as highestProfit
+        if(diff > highestProfit) highestProfit = diff;
     }
-    return maxDiff; // 5
+    return highestProfit;
+
 };
 
 console.log("maxProfit2:", maxProfit2([7,1,5,3,6,4]))
+
+
+const maxProfit3 = function(prices) {
+
+    let maxDiff = 0;
+    let minVal = prices[0];
+
+    for (let i = 1; i < prices.length; i++){ 
+        minVal = Math.min(minVal, prices[i]); //minVal = 1
+        let currDiff = prices[i] - minVal; // currDiff = 4 - 1 = 3
+        
+        if(currDiff != maxDiff)
+        maxDiff = Math.max(maxDiff, currDiff); // max between 5 and 3
+    }
+
+    return maxDiff; // 5
+};
+
+console.log("maxProfit3:", maxProfit3([7,1,5,3,6,4]))
