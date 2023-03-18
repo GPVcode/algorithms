@@ -1,5 +1,5 @@
 /*
- *  Valid Parentheses
+ *  [20. Valid Parentheses] - https://leetcode.com/problems/valid-parentheses/
  * 
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
  * 
@@ -39,12 +39,16 @@ Devising a Plan:
         check if this combined string is included in parents, if so, pop the stack twice.
         at the end length of stack should be zero. 
 Coding it Out: Stack
+
+
+                                            ()[]{}
+
 */
 
 var isValid = function(s) {
     if(s.length % 2 !== 0) return false;
 
-    const stack = [];                              
+    const stack = [];                             
     const parens = '() {} []';
     let i = 0;
 
@@ -76,31 +80,55 @@ Devising a Plan:
     set up map object with symbol as key and its opposite as its value
     loop through string
         assign current elemnt to variable
-        if 
+        if element in map, push map[element] to stack
+        else, check if c is not equal to stack.pop -- if so return false. The element has not pair
+    return if stack has length
 Coding it Out: Stack with Map
 */
 var isValid2 = function(s) { 
     if(s.length % 2 !== 0) return false;
 
-    const stack = [];
+    const stack = []; 
     const map = {
       '(': ')',
       '[': ']',
       '{': '}'
     }
-    
+
     for (let i = 0 ; i < s.length ; i++) {
         let c = s[i];
-        console.log("map[c]", map[c])
         if (map[c]) {
           stack.push(map[c])
-          console.log("stack:", stack)
-        } else if (c !== stack.pop()) {
-          return false;
+        } 
+        else if(stack.pop() !== c){
+            return false
         } 
     }
-    
     return !stack.length;
 };
 
-// console.log("isValid2:", isValid2("{()}"));
+console.log("isValid2:", isValid2("{()}"));
+
+
+var isValid3 = function(s) {
+    // Initialize stack to store the closing brackets expected...
+    let stack = [];
+    // Traverse each charater in input string...
+    for (let idx = 0; idx < s.length; idx++) {
+        // If open parentheses are present, push it to stack...
+        if (s[idx] == '{') {
+            stack.push('}');
+        } else if (s[idx] == '[') {
+            stack.push(']');
+        } else if (s[idx] == '(') {
+            stack.push(')');
+        }
+        // If a close bracket is found, check that it matches the last stored open bracket
+        else if (stack.pop() !== s[idx]) {
+            return false;
+        }
+    }
+    return !stack.length;  //['}', ')', ]
+};
+
+console.log("isValid3:", isValid3("{()}"));
