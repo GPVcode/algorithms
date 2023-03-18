@@ -60,3 +60,4 @@ const majorityElement2 = function(nums) {
 };
 
 console.log("majorityElement2:", majorityElement2([3,2,3]))
+
