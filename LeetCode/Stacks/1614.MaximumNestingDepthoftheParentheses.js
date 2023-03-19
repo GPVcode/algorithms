@@ -28,53 +28,65 @@
  * 
  */
 
-const maxDepth = function(s) {
-    let maxCount = 0, count = 0;
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '(') {
-            maxCount = Math.max(maxCount, ++count);
-        } else if (s[i] === ')') {
-            count--;
-        }
-    }
-    return maxCount;
-};
-
 /*
-Core Understanding:
-    output the number inside of the most parenthesis
-Devising a plan:
-    create map of parenthesis
-    create empty stack
-    loop through and check for parenthesis
-    if its a number, log the number and the current out
-    keep going until you find another number with a higher count
-
-Coding It Out: Stacks (lifo)
+    Core Understanding:
+        return the deepest perenthesis level
+    Devising a Plan:
+        create variables maxNumber and counter
+        loop through array
+            if ( found get the max between maxValue and counter + 1
+            if ) found subtract 1 from counter
+        return max
+    Coding it Out:
 */
+const maxDepth = function(s) {
+    //create max number;
+    let maxNumber = 0, counter = 0;
 
-const maxDepth2 = function(s) {
-    //create empty stack
-    let stack = []; // [ '(', '(', '(' ]
-
-    // create counter
-    let max = 0;
-
-    // loop through input
-    for(let i = 0; i < s.length; i++){
-        // if map
-        if(s[i] === '('){
-            stack.push(s[i])
+    for(let num of s){
+        if(num === '('){
+            // counter++;
+            // maxNumber = Math.max(maxNumber, counter)
+            maxNumber = Math.max(maxNumber, ++counter) //use preincrement to to refactor into 1 line
         }
-        if(s[i] === ')'){
-            stack.pop();
-        }
-        if(stack.length > max){
-            max = stack.length;
+        if(num === ')'){
+            counter--;
         }
     }
-    return max;  
+    return maxNumber;
 };
 
+console.log("maxDepth:", maxDepth("(1+(2*3)+((8)/4))+1"))
+
+ /*
+    Core Understanding:
+        return the number that represents the deepest parenthesis nesting ex: ((1)) output: 2
+    Devising a Plan:
+        loop through array
+            if i is (, add to max number, if its ) return max value
+    Coding it Out: For Loop
+ */
+    const maxDepth2 = function(s) {
+        //create stack;
+        let stack = [];
+        //create max number;
+        let maxNumber = 0;
+    
+    
+        for(let num of s){
+            if(num === '('){
+                stack.push(num);
+            }
+            if(num === ')'){
+                stack.pop();
+            }
+            if(stack.length > maxNumber){
+                maxNumber = stack.length;
+            }
+        }
+    
+        return maxNumber;
+    };
 console.log("maxDepth2:", maxDepth2("(1+(2*3)+((8)/4))+1"))
+
 
