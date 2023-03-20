@@ -65,5 +65,6 @@ const removeOuterParentheses = function(s) {
         }
     }
     return stack.join('');  
-};                                                        //            i
+};                                                        //   i
 console.log("removeOuterParentheses:", removeOuterParentheses("(()())(())"))
+
