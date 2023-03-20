@@ -12,41 +12,44 @@ class LinkedList {
 
     insertFirst(data){
         // Create a new node. We will insert this node. Pass in our data and this.head as its "next".
-        const node = new Node(data, this.head);
+        // const node = new Node(data, this.head);
         // Update this.head's reference
-        this.head = node; 
+        // this.head = node; 
         // Refactored: this.head = new Node(data, this.head);
+        this.insertAt(data, 0);
     }
 
     size(){
         let counter = 0;
         let node = this.head;
-        // if this.head does not exists, this while loop will not run!
+    // if this.head does not exists, this while loop will not run!
         while(node){ 
             counter++;
-            // look at the next property! This will tell us if while loop should continue.
+        // look at the next property! This will tell us if while loop should continue.
             node = node.next;
         }
         return counter
     }
 
     getFirst(){
-        return this.head;
+        // return this.head;
+        return this.getAt(0)
     }
 
     getLast(){
         // base case
-        if(!this.head) return null;
+        // if(!this.head) return null;
         // establish the first node
-        let node = this.head
+        // let node = this.head
         
         // loop while node is true
-        while(node){
+        // while(node){
             // test for proving last node.
-            if(!node.next) return node;
+            // if(!node.next) return node;
             // make sure to update node to next if above test is not triggered.
-            node = node.next
-        }
+            // node = node.next
+        // }
+        return this.getAt(this.size() - 1);
     }
 
     clear(){
@@ -56,73 +59,113 @@ class LinkedList {
 
     // set head to second node.
     removeFirst(){
-        let node = this.head
-        this.head = node.next;
+        // let node = this.head
+        // this.head = node.next;
+        this.removeAt(0);
     }
 
     removeLast(){
         // base case
-        if(!this.head) return;
+        // if(!this.head) return;
 
-        // takes care of 1 linked list instances.
-        if(!this.head.next){
-            this.head = null;
-            return null;
-        }
+        // takes care of 1 linked list instances
+        // if(!this.head.next){
+            // this.head = null;
+            // return null;
+        // }
         // pointers 1 & 2;
-        let previous = this.head;
-        let node = this.head.next;
+        // let previous = this.head;
+        // let node = this.head.next;
 
-        // as long as next is true.
-        while(node.next){
-            // keep pointers 1 & 2 moving.
-            previous = node;
-            node = node.next;
-        }
+        // as long as next is true
+        // while(node.next){
+            // keep pointers 1 & 2 moving
+            // previous = node;
+            // node = node.next;
+        // }
 
-        // crush last node.
-        previous.next = null;
+        // crush last node
+        // previous.next = null;
+        this.removeAt(this.size() - 1);
     }
 
     insertLast(data){
-        // retrieve the last node.
         let lastNode = this.getLast();
 
-        // if there is a last node, this last node's next equals new Node with incoming data.
         if(lastNode){
             lastNode.next = new Node(data);
         }
-        // otherwise, there isn't a last node, and we can set this new Node containing incoming data as our head.
         else{
             this.head = new Node(data);
         }
     }
-
+    
     // get node at index
-    getAt(n){
-        // establish head
-        let node = this.head;
-        // keep track of index
+    getAt(index){
+    // keep track of index
         let counter = 0;
+    // establish head
+        let node = this.head;
         
         while(node){
-            // find note matching n
-            if(index === n) return node;
-            // update index 
+        // find note matching n
+            if(counter === index) return node;
             counter++;
-            // keep node moving;
+        // keep node moving;
             node = node.next;
         }
         return null;
     }
+    
+    removeAt(index){
+        if(!this.head) return;
+        
+    // remove first element;
+        if(index === 0){
+            this.head = this.head.next;
+            return;
+        }
+
+        let previous = this.getAt(index - 1)
+        if(!previous.next) return;
+        previous.next = previous.next.next;
+        
+    }
+    
+    insertAt(data, index){
+    // if not this.head, node is at index 0
+        if(!this.head){
+            this.head = new Node(data);
+            return;
+        }
+    // if index is 0, set node.next this head and change this.head to node
+        if(index === 0){
+            this.head = new Node(data, this.head);
+            return;
+        }
+        
+    // if get at runs falsy value, set previous to last value;
+        let previous = this.getAt(index - 1) || this.getLast();
+        let node = new Node(data, previous.next)
+        previous.next = node;
+
+    }
+
+    forEach(fn){
+        let node = this.head;
+        let counter = 0;
+        while(node){
+            fn(node, counter);
+            node = node.next;
+            counter++;
+        }
+    }
+
+    *[Symbol.iterator](){
+        let node = this.head;
+        while(node){
+            yield node;
+            node = node.next;
+        }
+    }
 }
-
-const nodeOne = new Node(5);
-const list = new LinkedList();
-list.head = nodeOne;
-list.insertFirst(15);
-list.insertLast(05);
-list.getAt(2);
-
-console.log("list:", list)
-
