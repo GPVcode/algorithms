@@ -56,64 +56,44 @@ const mergeTwoLists = function(list1, list2) {      // list1 = [1,2,4] list2 = [
 
 
 
-//Merge two sorted linked lists and return it as a new sorted list. New list should be made by splicing together the nodes of the first two lists.
-
 /*
-Constraints: 
-- The number of nodes in both lists is in the range [0, 50]
-- -100 <= Node.val <= 100
-- Both l1 and l2 are sorted in non-decresing order.
+Core Understanding:
+    merge the two already sorted list into one sorted linked list
+Devising a Plan:
+    create a linked list
+    while list 1 and 2 are true, check to see which value is greater between list1 and list 2
+        if coniditons
+    don't forget to keep node moving;
+    take care of list with remaining nodes after looping ends
+
+    return dummy.next to return sorted merged linked list
+
+Coding it Out:
 */
+const mergeTwoLists2 = function(list1, list2) {   
+    // create linked list
+    let node = new ListNode();  // node = [0, 1, 1, 2, 3, 4, 4]  
+    let dummy = node;
 
-/*
-Edge cases: 
-- 2 empty lists merged should output one empty list.
-- 1 empty list and one list with one value should outpust a list of just one value.
-*/
-
-// function mergeTwoSortedListsl(l1, l2){
-//     //Check is any of the list is empty
-//     if(!l1){
-//         return l2;
-//     }
-//     if(!l2){
-//         return l1;
-//     }
-//     //determine head of new linked list. Head will be the smaller list of the two
-//     let head = null;
-//     //reference of head - null at this point
-//     let temp = head;
-
-//     if(l1.val < l2.val){
-//         temp = head = new List
-//     }
-//     //Loop through each node of the list until one of the lists gets traversed completely
-//     //While traversing the lists, id the smaller of the nodes of the lists and add it tot he results list.
-//     //When loop is done, if there is a list with nodes remaining, we will add those remaiing nodes to the resultant list
-//     if()
-// }
-
-
-function mergeTwoLinkedLists(l1, l2){
-    const curr = new ListNode();
-    const dummy  = curr;
-
-    while(l1 && l2){
-        if(l1.val < l2.val){
-            curr.next = l1
-            l1 = l1.next;
-        }else{
-            curr.next = l2
-            l2 = l2.next;
+    while(list1 && list2){
+        // check for lower value
+        if(list1.val < list2.val){
+            node.next = list1;
+            list1 = list1.next; 
         }
-        curr = curr.next
+        else{
+            node.next = list2;
+            list2 = list2.next;
+        }
+        //keep node moving
+        node = node.next
     }
 
-    if(l1){
-        curr.next = l1;
+    if(list1){
+        node.next = list1
     }
-    if(l2){
-        curr.next = l2;
+    if(list2){
+        node.next = list2
     }
     return dummy.next;
 }
