@@ -8,6 +8,45 @@
  * 
  */ 
 
+/*
+Core Understanding:
+    return an array where each element represents the width at each level
+Devising a Plan:
+    use BFS to check width
+    two arrays (counter and arr)
+    iterate while array is longer than 1
+        get node of shifted arr value
+        if conditions
+            if s appears, 
+            push 0 to counter
+            push s to array
+        otherwise
+            push node's children to arr
+            add to counter
+    return counter;
+
+Coding it Out: BFS + Array
+*/
+function levelWidth(root) {
+    // create arr and counters array
+    let counters = [0];       
+    let arr = [root, 's']; 
+    
+    // loop while array is greater than 1
+    while(arr.length > 1){
+        // assign first element to node
+        let node = arr.shift();
+        //check for 's', otherwise push children to arr and add to counter
+        if(node === "s"){
+            counters.push(0);
+            arr.push("s")
+        } else{
+            arr.push(...node.children)
+            counters[counters.length - 1]++;
+        }
+    }
+    return counters
+}
 
 class Node {
     constructor(data){
@@ -59,4 +98,4 @@ class Tree {
 
 }
 
-//Can you go straight to the node?
+// Question: Can you go straight to the node like an array?
