@@ -66,3 +66,49 @@ const search2 = function(nums, target) {
     };
     return -1;
 };
+
+
+/*
+Core Understanding:
+    find target in array
+Devising a Plan:
+    start with two pointers left and right
+    while left is less than right
+        finding middle cut iteration in half
+        check if target is greater than or less than middle
+        update left and right pointers depening on target's comparison with middle
+    return -1 after while loop ends and middle never equals target
+Coding it Out:
+                                              
+*/
+const search3 = function(nums, target) {
+    // create pointer
+    let left = 0, right = nums.length - 1;
+
+    while(left < right){
+        // get middle
+        let middle = Math.floor(left + right / 2)
+        if( target < nums[middle] ){
+            right = middle - 1;
+            // update left and right accordingly
+        } else{
+            left = middle + 1;
+        }
+    }
+    return nums[left] === target ? left : -1;
+}
+
+
+console.log("search3:", search3([-1,0,3,5,9,12], 0));
+
+
+let lo = 0, hi = nums.length-1;
+while (lo < hi) {
+    let mid = lo + Math.floor((hi-lo+1)/2);
+    if (target < nums[mid]) {
+        hi = mid - 1
+    } else {
+        lo = mid; 
+    }
+}
+return nums[lo]==target?lo:-1;
