@@ -58,6 +58,17 @@ const reverseList2 = function(head) {
     return first
 };
 
+// Recursion
+const reverseList3 = function(head, prev = null){
+    if(head === null) return prev;
+    // we will need this stored after arrow points somewhere else
+    const next = head.next;
+    // point arrow backwards
+    head.next = prev;
+    // recursive call inputs next as new head and head as new prev
+    return reverseList(next, head) 
+}
+
 
 /*
 // reverse a linked list

@@ -35,7 +35,7 @@ class Node {
         }
     }
 
-    constains(data){
+    contains(data){
         if(this.data === data){
             return this;
         }
