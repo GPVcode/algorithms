@@ -69,3 +69,23 @@ class Node {
     
 //     return null;
 // }
+
+
+
+
+
+
+
+
+// find number in array using recursion
+
+function FindNum(data, target){
+    console.log(data)
+    if(data === target){
+        return 8;
+    } 
+
+    FindNum(data+1, 8)
+}
+
+console.log("FindNum:", FindNum(1, 8))
