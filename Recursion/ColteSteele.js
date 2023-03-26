@@ -12,7 +12,7 @@ function forLoopCountdown(n){
     }
     console.log("all done!")
 }
-console.log("forLoop:", forLoopCountdown(10))
+// console.log("forLoop:", forLoopCountdown(10))
 
 /*
 Core Understanding:
@@ -29,7 +29,7 @@ function recursiveCountdown(n){
         return recursiveCountdown(n - 1)
     }
 }
-console.log("recursiveCount:", recursiveCountdown(10))
+// console.log("recursiveCount:", recursiveCountdown(10))
 
 /*
     Core Understanding:
@@ -44,7 +44,7 @@ const recursiveSumRange = function(n){
     if(n === 1) return 1;
     return n + recursiveSumRange(n-1);
 }
-console.log("recursiveSumRange:", recursiveSumRange(5))
+// console.log("recursiveSumRange:", recursiveSumRange(5))
 
 /*
     Core Understanding:
@@ -61,7 +61,7 @@ const sumRange = function(n){
     }
     return count;
 }
-console.log("sumRange:", sumRange(5))
+// console.log("sumRange:", sumRange(5))
 
 /*
     Core Understanding:
@@ -78,7 +78,7 @@ const factorial = function(n){
     }
     return count;
 }
-console.log("factorial:", factorial(5))
+// console.log("factorial:", factorial(5))
 
 /*
 Core Understanding:
@@ -94,3 +94,29 @@ const recursiveFactorial = function(n){
     return n * recursiveFactorial(n - 1);
 }     
 console.log("recursiveFactorial:", recursiveFactorial(5))
+
+/*
+Core Understanding:
+    create function that uses recursive helper method to collect all odds
+Devising a plan:
+    store values in in empty array
+    create helper function
+    call helper function
+    return array
+*/
+const allOddNumbers = function(arr){
+    let oddNumbers = []
+
+    //call helper function
+    function getOdd(n){
+        //  base case
+        if(n.length === 0) return;
+        if(n[0] % 2 !== 0) oddNumbers.push(n[0]);
+        return getOdd(n.slice(1))
+    }
+
+    getOdd(arr)
+
+    return oddNumbers
+}
+console.log("helperMethodRecursion:", allOddNumbers([1,2,3,4,5]))

@@ -1,4 +1,4 @@
-/**
+/*
  * 
  * [344. Reverse String]
  * 
@@ -14,8 +14,51 @@
  * Input: s = ["H","a","n","n","a","h"]
  * Output: ["h","a","n","n","a","H"]
  * 
- * 
- * */
+ */
+
+/*
+Core Understanding:
+    return input reversed as a string
+Devising a Plan:
+    base case to stop recursion
+    call recursive function usinge slice
+Coding it Out: Recursion
+*/
+const recursiveReverseString = function(s) {
+    // base
+    if(s.length === 1){
+        return s;
+    }
+    // call recursive function
+    return recursiveReverseString(s.slice(1)) + s[0];
+};
+
+console.log("recursiveReverseString:", recursiveReverseString(["H","a","n","n","a","h"]))
+
+/*
+Core Understanding:
+    return input reversed as a string
+Devising a Plan:
+    create recursive function inside frame and swap letters
+    call recursive function
+Coding it Out: Recursion
+*/
+const recursiveReverseString2 = function(s) {
+    
+    function reverse(l, r){
+        if(l < r){
+            [s[l], s[r]] = [s[r], s[l]];
+            return reverse(l + 1, r -1);
+        }
+    }
+
+    reverse(0, s.length - 1)
+    
+    return s;
+};
+
+console.log("recursiveReverseString2:", recursiveReverseString2(["H","a","n","n","a","h"]))
+
 
 /**
 Understand:
