@@ -52,3 +52,25 @@ console.log("isPalindrome:", isPalindrome("A man, a plan, a canal: Panama"))
     // s = s.toLowerCase().replace(/[^a-z0-9]/g, '');
     // // Check if the string is equal to its reverse
     // return s === s.split('').reverse().join('');
+
+
+/*
+Core Understanding:
+    output true if input is the same backwords. leave out characters that arent alhanumeric
+Devising a Plan:
+    use regex to filter out character we dont need
+    with 1 letter remaining return true
+    with two letters remaining return if letter 1 and two are equal
+    if first and last letters are equal return recursive function slicing from 1, -1
+    return false if none of the if statements are triggered.
+Coding it Out: Recursion
+*/
+function isPalindrome2(s) {
+    let newString = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    console.log("newStr:", newString)
+    if(newString.length === 1) return true;
+    if(newString.length === 2) return newString[0] === newString[1];
+    if(newString[0] === newString.slice(-1)) return isPalindrome(newString.slice(1, -1));
+    return false;
+}
+console.log("isPalindrome2:", isPalindrome2("A man, a plan, a canal: Panama"))
