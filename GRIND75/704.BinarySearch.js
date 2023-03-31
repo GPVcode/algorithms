@@ -98,3 +98,34 @@ const search3 = function(nums, target) {
 }
 
 console.log("search3:", search3([-1,0,3,5,9,12], 0));
+
+
+/*
+Core Understanding:
+    Use recursion to find bumber in array, return -1 if not found
+Devising a Plan:
+    create base case 
+        if nums length is zero return -1
+    check if target is greater or less than middle
+    return recursive function 
+Coding it Out:
+*/
+const search4 = function(nums, target){
+
+    const recursionHelper = function(start, end){
+        // base 
+        if( start > end ) return -1;
+        const middle = Math.floor((start + end) / 2);
+        if(target === nums[middle]) return middle;
+        console.log("start:", start)
+        console.log("end:", end)
+
+        //check if target is less than or greater than middle number
+        if(target > nums[middle]) return recursionHelper(middle + 1, end)
+        return recursionHelper(0, middle - 1)
+    }
+
+    return recursionHelper(0, nums.length - 1)
+}
+
+console.log("search4:", search4([-1,0,3,5,9,12], 12));

@@ -74,3 +74,23 @@ function isPalindrome2(s) {
     return false;
 }
 console.log("isPalindrome2:", isPalindrome2("A man, a plan, a canal: Panama"))
+
+
+
+
+/*
+Core Understanding:
+    check if str is palindrome true or false
+Devising a Plan:
+    create base case length of 1 and length of 2
+    return recursive function getting rid of outer elements
+Coding it Out: recursion
+*/
+function palindrome3(s){
+    let str = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    // base case
+    if(str.length === 1) return true;
+    if(str.length === 1) return true;
+    if(str[0] === str.slice(-1)) return isPalindrome(str.slice(1, -1));
+    return false;
+}

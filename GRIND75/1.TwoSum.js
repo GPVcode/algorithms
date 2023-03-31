@@ -25,14 +25,14 @@
  */
 /*
 Understand the question:
-    return the indices who values sum to target  input: [1, 1] target = 2 output: [0, 1]
+    return the indices whose values sum to target  input: [1, 1] target = 2 output: [0, 1]
 Devise a plan:
     Use nested loops to find pair of target. return the indexes when pair is found
 Code:
     Brute force
 */
 
-var twoSum = function(nums, target) { 
+const twoSum = function(nums, target) { 
     //brute force
     for(let i = 0; i < nums.length; i++){
         for(let j = i + 1; j < nums.length; j++){
@@ -54,7 +54,7 @@ Code:
     >>Hashmap Solution<<
 */
 
-var twoSum = function(nums, target) { 
+const twoSum2 = function(nums, target) { 
     //create map {}
     let map = {};
 
@@ -68,4 +68,70 @@ var twoSum = function(nums, target) {
     console.log(map)
 }
 
-console.log(twoSum([2, 7,11,15], 9))
+// console.log("twoSum2:", twoSum2([2, 7,11,15], 9))
+
+
+/*
+Understand the question:
+    Use recursion return the indices who values sum to target  input: [1, 1] target = 2 output: [0, 1]
+Devise a plan:
+    what if you used recursion inside of a loop? This would negate need for nested loops. It worked for the first iteration. Let's see if it fails other tests.
+    loop through
+        find diff between target and current num[i]
+        inside loop set up recursive helper to find the matching index
+        call and store recursive function with input i + 1 into var name of choice. I chose "finder" and assigned the helper call to it.
+        use if statement to check diff and num[finder], if true return i and finder in an array.
+Code: Recursion
+*/
+
+const twoSum3 = function(nums, target) { 
+
+    // Loop 
+    for(let i = 0; i < nums.length; i++){
+        let diff = target - nums[i];
+        let helper = function(j){
+            if(diff === nums[j]) return j;
+            if(j === nums.length) return null;
+            return helper(j+1)
+        }
+        // let recursion do the task
+        let finder = helper(i + 1)
+        if(diff === nums[finder]){
+            return [i, finder]
+        }
+    }
+}
+
+console.log("twoSum3:", twoSum3([3,2], 6))
+
+
+
+/*
+Understand the question:
+    Use recursion return the indices who values sum to target  input: [1, 1] target = 2 output: [0, 1]
+Devise a plan:
+    set base case of when arr no longer has stored value
+    get current value using pop method
+    set diff of target and current value
+    use if conditions to get answer or call recursive function
+Code: Recursion
+*/
+
+const twoSum4 = function(nums, target) { 
+    // base case
+    if(!nums.length) return;
+    // get current value using pop. Can't use shift!
+    let value = nums.pop();
+    // get diff or number to look for in array
+    let diff = target - value;
+
+    // when triggered, we have our answer
+    if(nums.indexOf(diff) >= 0){
+        return [nums.indexOf(diff), nums.length]
+    } else{ 
+        // keep moving through array
+        return twoSum(nums, target)
+    }
+}
+
+console.log("twoSum3:", twoSum3([3,2], 6))
