@@ -21,3 +21,35 @@ function bubbleSort(arr){
     return arr;
 };
 
+// console.log("bubbleSort:", bubbleSort([2,0,2,1,1,0]))
+
+/*
+Core Understanding:
+    reorder input using bubblesort
+Devising a Plan:
+    use nested loops
+    in second nested loop, make sure to subtract iteration length by i;
+Coding it Out: Bubble Sort
+                                                       i
+                                                    [0,1,1,0,2,2]
+                                                           j
+                                                             k 
+                                                    nums[j] = 0
+                                                  nums[j+1] = 2
+                                                    nums[i] = 2
+                                                     length = 5
+                                                    
+*/
+const sortColors = function(nums) {
+    for(let i = 0; i < nums.length; i++){
+        for(let j = 0; j < nums.length - i; j++){
+            if(nums[j] > nums[j + 1]){
+                [nums[j], nums[j+1]] = [nums[j+1], nums[j]]
+            }
+        }
+    }
+    return nums;
+};
+                                    //     j
+console.log("sortColors:", sortColors([2,0,2,1,1,0]))
+                                    // i

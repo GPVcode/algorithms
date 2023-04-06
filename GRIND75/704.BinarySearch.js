@@ -102,7 +102,7 @@ console.log("search3:", search3([-1,0,3,5,9,12], 0));
 
 /*
 Core Understanding:
-    Use recursion to find bumber in array, return -1 if not found
+    Use recursion to find number in array, return -1 if not found
 Devising a Plan:
     create base case 
         if nums length is zero return -1
@@ -129,3 +129,36 @@ const search4 = function(nums, target){
 }
 
 console.log("search4:", search4([-1,0,3,5,9,12], 12));
+
+/*
+Core Understanding:
+    use Binary search to find target
+Devising a Plan:
+    find low and high
+    check if middle equals target 
+        if target less than middle, update high
+        if target greater than middle, update low
+        if target equals middle, return
+    m = (lo + (hi - lo) / 2) 
+    v = arr[m]
+Coding it Out:
+*/
+const search5 = function(nums, target){
+
+    let low = 0, high = nums.length - 1;
+    // console.log("middle:", middle)
+    
+    while(low < high){
+        let middle = low + Math.floor((high - low) / 2)
+        if(target === nums[middle]) return middle;
+        else if(target < nums[middle]) high = middle;
+        else low = middle + 1;
+    }
+
+    return nums[low] === target ? low : -1
+}
+
+console.log("search5:", search5([-1,0,3,5,9,12], 3));
+
+ 
+console.log("search6:", search6([-1,0,3,5,9,12], 12));
