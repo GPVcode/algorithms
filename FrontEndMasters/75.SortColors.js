@@ -53,3 +53,29 @@ const sortColors = function(nums) {
                                     //     j
 console.log("sortColors:", sortColors([2,0,2,1,1,0]))
                                     // i
+
+
+/*
+Core Understanding:
+    Use bubble sort to sort input
+Devising a plan:
+    Use Nested Loops
+        inside of nested loop, if j is greater than j + 1, flip them
+    return array
+Coding it Out: Bubble sort
+*/
+
+const sortColors2 = function(nums) {
+
+    // nested loops
+    for(let i = 0; i < nums.length; i++){
+        for(let j = 0; j < nums.length - i; j++){
+            if(nums[j] > nums[j+1]){
+                [nums[j], nums[j+1]] = [nums[j+1], nums[j]]
+            }
+        }
+    }
+    return nums
+};
+
+console.log("sortColors2:", sortColors2([89,2,0,2,1,1,0]))
