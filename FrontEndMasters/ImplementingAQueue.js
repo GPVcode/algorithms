@@ -5,6 +5,7 @@ class Queue{
     }
 
     enqueue(data){
+        this.length++;
         const node = new Node(data)
         this.length++;
         if(!this.tail){
@@ -15,20 +16,25 @@ class Queue{
         this.tail = node;
     }
 
+    // You're up buddy!
     dequeue(){
         if(!this.head){
             return undefined;
         }
+
         this.length--;
 
         // save head and update head
         const head = this.head;
         this.head = this.head.next;
         
-
         // free old head by setting its next to undefined
         head.next = undefined;
 
+        if(this.length === 0){
+            this.tail = undefined;
+        }
+        
         return head.value
     }
 
