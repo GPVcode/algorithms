@@ -1,15 +1,13 @@
-function solution(str){
-    // empty arr
-    let result = [];
-
-    let arr = str.split('')
-    
-    while(arr.length > 0){
-    let enter = arr.splice(0,2)
-    console.log("enter:", enter)
-    console.log("str", arr)
+function arrayDiff(a, b) {
+  let newArr = []
+  for(let i = 0; i < a.length; i++){
+    let aContainsValue = false;
+    for(let j = 0; j < b.length; j++){
+      if(a[i] === b[j]) aContainsValue = true;
+    }
+    if(!aContainsValue) newArr.push(a[i])
   }
-    return result   
+  return newArr;
   }
 
-console.log("solution", solution('abcdef'))
+console.log("arrayDiff:", arrayDiff(arrayDiff([1,2],[1]), [2]))
