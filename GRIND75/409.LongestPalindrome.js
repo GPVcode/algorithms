@@ -74,4 +74,4 @@ const longestPalindrome2 = function(s) {
     }
     return s.length > counter ? counter + 1 : counter
 };
-console.log("longestPalindrome2:", longestPalindrome2("abccZZccdd"))
+console.log("longestPalindrome2:", longestPalindrome2("abccZZccdd")) 
