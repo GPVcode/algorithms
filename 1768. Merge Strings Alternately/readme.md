@@ -53,7 +53,8 @@ Reason: We are just traversing each string once.
 Space Complexity: O(n + m) for the output. The algorithm itself uses O(1) space apart from the output.
 Extend/Elaborate:
 
-Teacher: "Why is this useful? Imagine building a tool for designers where they want to merge patterns from two designs. This algorithm can help with that! The world of algorithms is all around us!"
+# Engage 
+Why is this useful? Imagine building a tool for designers where they want to merge patterns from two designs. This algorithm can help with that! The world of algorithms is all around us!
 
 # Evaluate:
 
@@ -61,8 +62,8 @@ Teacher: "Let's try a couple of problems to practice!"
 
 word1 = "apple", word2 = "orange"
 word1 = "hello", word2 = "world"
-Summary:
 
-Teacher: "Great job today! We've taken two strings and merged them together, taking characters alternately. This is not just about merging words but about understanding the pattern and applying it elsewhere. Keep looking for patterns in the world around you!"
+### Summary:
+Great job today! We've taken two strings and merged them together, taking characters alternately. This is not just about merging words but about understanding the pattern and applying it elsewhere. Keep looking for patterns in the world around you!
 
 Keep the Spark Alive: Inspire them to think of where else alternating patterns might be useful. Maybe in music, art, or some game they play? Algorithms are everywhere, and the ability to see the world algorithmically is a superpower!
